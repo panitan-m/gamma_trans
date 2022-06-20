@@ -19,15 +19,15 @@ cd datasets
 
 ## Γ-Trans
 ```
-pthon run_gamma_trans.py --aspects {'recommend|'substance', 'appropriate', 'comparison', 'soundness', 'originality', 'clarity', 'impact'}
+pthon run_gamma_trans.py --aspects {'recommend', 'substance', 'appropriate', 'comparison', 'soundness', 'originality', 'clarity', 'impact'}
 ```
 
 ## Ladder
 ```
-pthon run_ladder.py --aspects {'recommend|'substance', 'appropriate', 'comparison', 'soundness', 'originality', 'clarity', 'impact'}
+pthon run_ladder.py --aspects {'recommend', 'substance', 'appropriate', 'comparison', 'soundness', 'originality', 'clarity', 'impact'}
 ```
 
 ## Γ-model
 ```
-pthon run_gamma_model.py --aspects {'recommend|'substance', 'appropriate', 'comparison', 'soundness', 'originality', 'clarity', 'impact'}
+pthon run_gamma_model.py --aspects {'recommend', 'substance', 'appropriate', 'comparison', 'soundness', 'originality', 'clarity', 'impact'}
 ```
