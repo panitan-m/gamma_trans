@@ -244,16 +244,16 @@ class LadderNetworkGamma(nn.Module):
             else:
                 layer_outputs = layer_module(h, extended_attention_mask)
             h = layer_outputs[0]
-            h = add_noise(h, self.noise_std)
+            h = add_noise(h, noise_std)
             all_z[i] = h
   
         z = self.bert.pooler.dense(h[:, 0])
-        z = add_noise(z, self.noise_std)
+        z = add_noise(z, noise_std)
         h = self.bert.pooler.activation(z)
         all_z[-2] = z
         
         z = self.fc_enc(h)
-        z = add_noise(z, self.noise_std)
+        z = add_noise(z, noise_std)
         all_z[-1] = z
         
         h = z
