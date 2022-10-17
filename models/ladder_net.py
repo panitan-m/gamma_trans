@@ -199,7 +199,7 @@ class LadderNetworkGamma(nn.Module):
         # self.batch_norm_enc = nn.ModuleList([nn.BatchNorm1d(s, affine=False, eps=1e-10) for s in layer_sizes[1:]])
         # self.batch_norm_dec = nn.ModuleList([nn.BatchNorm1d(s, affine=False, eps=1e-10) for s in layer_sizes])
         # self.betas = nn.ModuleList([AddBeta(s) for s in layer_sizes[1:]])
-        self.g_guass = G_Guass(output_size)
+        self.g_guass = G_Guass(self.bert.config.hidden_size)
         
         if hasattr(args, 'loss_fn'):
             self.loss_fn = LOSS_FN[args.loss_fn]
