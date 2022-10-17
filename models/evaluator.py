@@ -31,6 +31,7 @@ class EvaluatorKFold():
     def evaluate(self, preds, targets, writer, fold, current_step):
         description = '[TEST] '
         eval_avg_aspects = {}
+        is_best = False
         for m in self.eval_metrics:
             eval_aspects = []
             for aid in range(len(self.aspects)):
@@ -45,12 +46,14 @@ class EvaluatorKFold():
             else:
                 if eval_avg_aspects[m] > self.best_eval[m][fold]:
                     self.save_best(m, fold, eval_avg_aspects, eval_aspects, preds, targets)
+                    is_best = True
                     
         description += '  ( '
         for m in self.eval_metrics:
             description += "{}: {:.4f} ".format(m.upper(), np.average(self.best_test[m][fold]))
         description += ')'
         logger.info(description)
+        return is_best
 
     def dump_predictions(self):
         with open(self.out_dir+'/predictions.json', 'w') as f:

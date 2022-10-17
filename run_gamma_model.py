@@ -203,9 +203,14 @@ for kf, (train_idx, test_idx) in enumerate(skf.split(x, y)):
                     writer.add_scalars("loss", {'test': test_losses.avg}, current_step)
                     
                     test_pred, test_truth = torch.tensor(test_pred).T, torch.tensor(test_truth).T                    
-                    test_eval.evaluate(test_pred, test_truth, writer, kf, current_step)
+                    is_best = test_eval.evaluate(test_pred, test_truth, writer, kf, current_step)
 
                     test_losses.reset()
+                    
+                    if is_best:
+                        save_dir = out_dir + "/fold_{}/best_model".format(kf)
+                        # torch.save(model, save_dir)
+                        torch.save(model.state_dict(), save_dir)
                 
             if args.save_checkpoint > 0 and (epoch+1) % args.save_checkpoint == 0:
                 save_dir = out_dir + "/checkpoints/fold_{}/ckpt.e{}".format(kf, epoch+1)
