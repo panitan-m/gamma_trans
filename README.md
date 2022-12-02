@@ -1,5 +1,5 @@
 # Γ-Trans
-Implementaion of Exploiting Labeled and Unlabeled Data via Transformer Fine-tuning for Peer-Review Score Prediction
+Implementation of Exploiting Labeled and Unlabeled Data via Transformer Fine-tuning for Peer-Review Score Prediction
 
 ## Environment Installation
 1. Download and install [Anaconda](https://www.anaconda.com/products/individual)
